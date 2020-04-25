@@ -1,0 +1,11 @@
+AllCops:
+  EnabledByDefault: true
+
+Bundler/GemComment:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
