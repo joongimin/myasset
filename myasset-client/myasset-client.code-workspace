@@ -5,6 +5,9 @@
     }
   ],
   "settings": {
+    "files.exclude": {
+      "dist": true
+    },
     "editor.codeActionsOnSave": {
       "source.fixAll": true
     }
