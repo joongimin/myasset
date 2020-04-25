@@ -1,0 +1,8 @@
+@import './_texts.scss';
+
+@mixin body($at-root: false) {
+  @include text-content;
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+  font-weight: normal;
+  text-align: left;
+}

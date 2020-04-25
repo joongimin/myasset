@@ -1,0 +1,16 @@
+{
+  "validations": {
+    "summary": "There are {count} errors.",
+    "required": "Required",
+    "gt": "Must be greater than {allowed}",
+    "gte": "Must be greater than or equal to {allowed}",
+    "lt": "Must be less than {allowed}",
+    "lte": "Must be less than or equal to {allowed}",
+    "positive_integer": "Must be a positive integer",
+    "min_max_integer": "Must be an integer between {min} and {max}",
+    "email_format": "Invalid email format",
+    "max_length": "Up to {limit} characters allowed",
+    "password": "Password does not meet the requirements",
+    "password_confirmation": "Password does not match"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "app": {
-    "email": "Email"
+    "email": "Email",
+    "password": "Password"
   }
 }

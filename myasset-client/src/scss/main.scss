@@ -1,0 +1,43 @@
+@import './vars/_colors.scss';
+@import './mixins/_body.scss';
+@import './_reset.scss';
+
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  @include body(true);
+}
+
+em {
+  background-color: $color-highlight;
+}
+
+i {
+  display: inline-block;
+}
+
+b {
+  font-weight: bold;
+}
+
+label {
+  cursor: pointer;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.mt4 {
+  margin-top: 4px;
+}

@@ -1,0 +1,49 @@
+@import './vendor/_reset';
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: inherit;
+  color: inherit;
+
+  &:active {
+    transition: none;
+  }
+
+  &:disabled {
+    cursor: inherit;
+  }
+}
+
+input,
+textarea {
+  outline: none;
+  background-color: transparent;
+}
+
+fieldset {
+  min-inline-size: 0;
+}

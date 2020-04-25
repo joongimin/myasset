@@ -1,0 +1,36 @@
+$grid-columns: 12;
+$grid-gutter-width: 16px;
+
+$grid-breakpoints: (
+  mobile: 0,
+  tablet: 720px,
+  desktop: 1024px
+);
+
+$main-alert-height: 48px;
+$topbar-height: 44px;
+
+$main-menu-height-tablet: 60px;
+
+$padding-horizontal-desktop: 32px;
+$padding-horizontal-tablet: 24px;
+
+@mixin main-padding-horizontal {
+  padding-left: $padding-horizontal-desktop;
+  padding-right: $padding-horizontal-desktop;
+
+  @include media-breakpoint-each(tablet, mobile) {
+    padding-left: $padding-horizontal-tablet;
+    padding-right: $padding-horizontal-tablet;
+  }
+}
+
+@mixin main-negative-margin-horizontal {
+  margin-left: -$padding-horizontal-desktop;
+  margin-right: -$padding-horizontal-desktop;
+
+  @include media-breakpoint-each(tablet, mobile) {
+    margin-left: -$padding-horizontal-tablet;
+    margin-right: -$padding-horizontal-tablet;
+  }
+}

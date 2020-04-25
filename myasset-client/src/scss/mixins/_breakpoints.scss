@@ -1,0 +1,10 @@
+@import './layouts.scss';
+@import '../vendor/bootstrap/mixins/_breakpoints.scss';
+
+@mixin media-breakpoint-each($names...) {
+  @each $name in $names {
+    @include media-breakpoint-only($name) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+$transition-duration-slow: 0.25s;
+$transition-duration-basic: 0.1s;
+
+@mixin transition-slow($property...) {
+  transition-property: $property;
+  transition-duration: $transition-duration-slow;
+  transition-timing-function: ease-out;
+  transition-delay: 0;
+}
+
+@mixin transition-basic($property...) {
+  transition-property: $property;
+  transition-duration: $transition-duration-basic;
+  transition-timing-function: ease-out;
+  transition-delay: 0;
+}

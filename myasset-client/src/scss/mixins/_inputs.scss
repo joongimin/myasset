@@ -1,0 +1,91 @@
+@import '@/scss/vars/_colors.scss';
+@import '@/scss/mixins/_texts.scss';
+@import '@/scss/mixins/_transitions.scss';
+
+$input-border-radius: 3px;
+$radio-checkbox-size: 14px;
+$radio-checkbox-size-standalone: 16px;
+
+@mixin input-base {
+  @include text-content;
+  @include transition-basic(
+    box-shadow,
+    border-color,
+    border-width,
+    background-color
+  );
+
+  width: 100%;
+  border-radius: $input-border-radius;
+  border: 1px solid $color-form-border;
+  appearance: none;
+
+  &:hover {
+    border-color: $color-form-border-hover;
+  }
+
+  &:focus, &:focus-within {
+    border-color: $color-form-border-selected;
+    @include focus-highlight($color-form-focus-highlight);
+  }
+
+  &:disabled,
+  &--disabled {
+    border-color: $color-grey-25;
+    color: $color-disable-text;
+    pointer-events: none;
+  }
+
+  &--inline {
+    margin-right: 4px;
+  }
+
+  @include input-invalid;
+}
+
+@mixin radio-checkbox-base {
+  @include input-base;
+
+  border-width: 2px;
+  width: $radio-checkbox-size;
+  height: $radio-checkbox-size;
+  margin: 0;
+  cursor: pointer;
+
+  &:checked {
+    border-width: 5px;
+    border-color: $color-primary;
+
+    &:focus {
+      @include focus-highlight($color-primary-light);
+    }
+  }
+
+  &:disabled {
+    border-color: $color-grey-25;
+  }
+}
+
+@mixin input-invalid {
+  &--invalid {
+    border-color: $color-red;
+    &:hover {
+      border-color: $color-red;
+    }
+    &:focus {
+      border-color: $color-red;
+      @include focus-highlight($color-red-light);
+    }
+  }
+}
+
+@mixin focus-highlight($color) {
+  box-shadow: 0 0 0 2px $color;
+}
+
+@mixin input-placeholder {
+  &::placeholder {
+    @include text-placeholder;
+    color: $color-disable-text;
+  }
+}

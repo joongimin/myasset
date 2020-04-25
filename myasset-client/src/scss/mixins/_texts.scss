@@ -1,0 +1,193 @@
+@import '@/scss/vars/_colors.scss';
+
+@mixin text-title {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 28px;
+  color: $color-title-text;
+}
+
+@mixin text-modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 26px;
+  color: $color-title-text;
+}
+
+@mixin text-modal-title-light {
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 26px;
+  color: $color-title-text-light;
+}
+
+@mixin text-sub-title {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 24px;
+  color: $color-title-text;
+}
+
+@mixin text-sub-title-light {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+  color: $color-title-text-light;
+}
+
+@mixin text-main-navigation {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 16px;
+  color: $color-button-text;
+}
+
+@mixin text-sub-navigation {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-button-text-dark;
+}
+
+@mixin text-sub-navigation-light {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-button-text;
+}
+
+@mixin text-utility-navigation {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-button-text;
+}
+
+@mixin text-content {
+  font-size: 13px;
+  line-height: 20px;
+  color: $color-content-text;
+}
+
+@mixin text-content-light {
+  @include text-content;
+  color: $color-content-text-light;
+}
+
+@mixin text-placeholder {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-disable-text;
+}
+
+@mixin text-label {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  color: $color-title-text;
+}
+
+@mixin text-table-head {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  color: $color-title-text-light;
+}
+
+@mixin text-table-sub-head {
+  font-size: 12px;
+  font-weight: normal;
+  color: $color-title-text-light;
+}
+
+@mixin text-tab {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-button-text;
+}
+
+@mixin text-tab-small {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-button-text;
+}
+
+@mixin text-button {
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  color: $color-button-text;
+}
+
+@mixin text-caption-dark {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-60;
+}
+
+@mixin text-caption-darker {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-80;
+}
+
+@mixin text-caption-red {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-red;
+}
+
+@mixin text-caption-title {
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 28px;
+  color: $color-grey-80;
+}
+
+@mixin text-caption {
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-50;
+}
+
+@mixin text-caption-small {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-50;
+}
+
+@mixin text-caption-small-dark {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-60;
+}
+
+@mixin text-caption-small-darker {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-80;
+}
+
+@mixin text-caption-tiny-dark {
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-grey-60;
+}
+
+@mixin text-tag {
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 18px;
+  color: $color-button-text-dark;
+}
