@@ -1,0 +1,8 @@
+server {
+  listen 80;
+  server_name myasset.live;
+  root <%= current_path %>/public;
+
+  access_log off;
+  error_log <%= shared_path %>/log/myasset-nginx.error.log;
+}
