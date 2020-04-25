@@ -1,1 +1,1 @@
-role(:app, %w[myasset.live])
+role :app, %w[myasset.live]

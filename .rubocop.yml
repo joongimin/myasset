@@ -1,11 +1,23 @@
-AllCops:
-  EnabledByDefault: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
 
-Bundler/GemComment:
-  Enabled: false
+Lint/RaiseException:
+  Enabled: true
 
-Style/Copyright:
-  Enabled: false
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/ExponentialNotation:
+  Enabled: true
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  EnforcedStyle: never
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
