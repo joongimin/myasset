@@ -1,7 +1,7 @@
 module.exports = {
   devServer: {
-    host: "lmyasset.live",
+    host: 'lmyasset.live',
     port: 9710,
-    public: "http://lmyasset.live"
+    public: 'http://lmyasset.live'
   }
 };
