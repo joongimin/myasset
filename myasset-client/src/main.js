@@ -4,6 +4,8 @@ import i18n from './lib/i18n';
 import router from './router';
 import store from './store';
 
+import './components';
+
 Vue.config.productionTip = false;
 
 new Vue({ i18n, router, store, render: h => h(App) }).$mount('#app');
