@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const fs = require('fs');
 const { google } = require('googleapis');
 const axios = require('axios');
@@ -25,7 +26,7 @@ class Spreadsheet {
       spreadsheetId: this.spreadsheetId,
       range: 'Summary!A3:A',
     });
-    return data.values;
+    return _.flatten(data.values);
   }
 
   async updatePrices(prices) {
@@ -55,6 +56,7 @@ async function fetchStockPrice(symbol) {
           .split('regularMarketPrice')[1]
           .split('fmt":"')[1]
           .split('"')[0]
+          .replace(/,/g, '')
       );
       return price;
     } catch (err) {
@@ -74,6 +76,9 @@ async function main() {
     symbols.map((symbol) => fetchStockPrice(symbol))
   );
   await spreadsheet.updatePrices(prices);
+  _.zip(symbols, prices).forEach(([symbol, price]) =>
+    console.log(`${symbol}: ${price}`)
+  );
 }
 
 main();
