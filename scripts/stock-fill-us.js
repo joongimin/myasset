@@ -7,7 +7,7 @@ class Spreadsheet {
   constructor(client) {
     this.client = client;
 
-    const config = JSON.parse(fs.readFileSync('stock-fill.secret.json'));
+    const config = JSON.parse(fs.readFileSync('stock-fill-us.secret.json'));
     this.spreadsheetId = config.spreadsheet_id;
   }
 
