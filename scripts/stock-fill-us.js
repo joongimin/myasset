@@ -1,47 +1,8 @@
 const _ = require('lodash');
 const fs = require('fs');
-const { google } = require('googleapis');
 const axios = require('axios');
 
-class Spreadsheet {
-  constructor(client) {
-    this.client = client;
-
-    const config = JSON.parse(fs.readFileSync('stock-fill-us.secret.json'));
-    this.spreadsheetId = config.spreadsheet_id;
-  }
-
-  static async build() {
-    const auth = new google.auth.GoogleAuth({
-      keyFilename: 'googleapi-credential.secret.json',
-      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-    const authClient = await auth.getClient();
-    const { spreadsheets } = google.sheets({ version: 'v4', auth: authClient });
-    return new Spreadsheet(spreadsheets.values);
-  }
-
-  async fetchSymbols() {
-    const { data } = await this.client.get({
-      spreadsheetId: this.spreadsheetId,
-      range: 'Summary!A3:A',
-    });
-    return _.flatten(data.values);
-  }
-
-  async updatePrices(prices) {
-    const range = `Summary!F3:F${2 + prices.length}`;
-    await this.client.update({
-      spreadsheetId: this.spreadsheetId,
-      range,
-      valueInputOption: 'USER_ENTERED',
-      resource: {
-        range,
-        values: prices.map((p) => [p]),
-      },
-    });
-  }
-}
+const Spreadsheet = require('./Spreadsheet');
 
 async function fetchStockPrice(symbol) {
   const url = `https://finance.yahoo.com/quote/${symbol}/`;
@@ -70,7 +31,9 @@ async function fetchStockPrice(symbol) {
 }
 
 async function main() {
-  const spreadsheet = await Spreadsheet.build();
+  const config = JSON.parse(fs.readFileSync('stock-fill-us.secret.json'));
+
+  const spreadsheet = await Spreadsheet.build(config.spreadsheet_id);
   const symbols = await spreadsheet.fetchSymbols();
   const prices = await Promise.all(
     symbols.map((symbol) => fetchStockPrice(symbol))
