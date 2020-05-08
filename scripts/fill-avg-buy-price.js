@@ -21,24 +21,19 @@ const computeAvgBuyPrice = (symbol, history) => {
     ),
   }));
 
-  const buyItems = items.filter((item) => item.action === 'Buy');
-  const sellItems = items.filter((item) => item.action === 'Sell');
-
-  const filteredBuyItems = [...buyItems];
-  let bi = 0;
-  sellItems.forEach(({ qty }) => {
-    let remaining = qty;
-    while (remaining > 0) {
-      if (remaining > filteredBuyItems[bi].qty) {
-        remaining -= filteredBuyItems[bi].qty;
-        filteredBuyItems[bi].qty = 0;
-        ++bi;
-      } else {
-        filteredBuyItems[bi].qty -= remaining;
-        remaining = 0;
-      }
+  let startIdx = 0;
+  let balance = 0;
+  items.forEach((item, i) => {
+    if (item.action === 'Buy') balance += item.qty;
+    else {
+      balance -= item.qty;
+      if (balance === 0) startIdx = i + 1;
     }
   });
+
+  const filteredBuyItems = items
+    .slice(startIdx)
+    .filter((i) => i.action === 'Buy');
 
   const qty = filteredBuyItems.reduce((sum, i) => sum + i.qty, 0);
   const price = filteredBuyItems.reduce((sum, i) => sum + i.price * i.qty, 0);
