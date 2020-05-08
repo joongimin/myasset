@@ -33,7 +33,7 @@ async function fetchStockPrice(symbol) {
 async function main() {
   const config = JSON.parse(fs.readFileSync('invest-us.secret.json'));
 
-  const spreadsheet = await Spreadsheet.build(config.spreadsheet_id, 'A', 'F');
+  const spreadsheet = await Spreadsheet.build(config.spreadsheet_id);
   const symbols = await spreadsheet.fetchSymbols();
   const prices = await Promise.all(
     symbols.map((symbol) => fetchStockPrice(symbol))
