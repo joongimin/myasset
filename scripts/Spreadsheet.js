@@ -40,6 +40,15 @@ class Spreadsheet {
     return data.values;
   }
 
+  async updateValues(range, values) {
+    await this.client.update({
+      spreadsheetId: this.spreadsheetId,
+      range,
+      valueInputOption: 'USER_ENTERED',
+      resource: { range, values },
+    });
+  }
+
   async fetchSymbols() {
     const col = this.colIdxMap.Summary['Symbol'];
     const values = await this.fetchValues(`Summary!${col}3:${col}`);
@@ -48,16 +57,10 @@ class Spreadsheet {
 
   async updatePrices(prices) {
     const col = this.colIdxMap.Summary['Cur Price'];
-    const range = `Summary!${col}3:${col}${2 + prices.length}`;
-    await this.client.update({
-      spreadsheetId: this.spreadsheetId,
-      range,
-      valueInputOption: 'USER_ENTERED',
-      resource: {
-        range,
-        values: prices.map((p) => [p]),
-      },
-    });
+    await this.updateValues(
+      `Summary!${col}3:${col}${2 + prices.length}`,
+      prices.map((p) => [p])
+    );
   }
 }
 
