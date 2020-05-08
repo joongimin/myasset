@@ -30,7 +30,7 @@ async function main() {
   const config = JSON.parse(fs.readFileSync('invest-kr.secret.json'));
 
   const spreadsheet = await Spreadsheet.build(config.spreadsheet_id);
-  const symbols = await spreadsheet.fetchSymbols();
+  const symbols = await spreadsheet.fetchSymbols('Code');
   const prices = await Promise.all(
     symbols.map((symbol) => fetchStockPrice(symbol))
   );

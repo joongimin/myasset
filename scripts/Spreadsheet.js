@@ -49,8 +49,8 @@ class Spreadsheet {
     });
   }
 
-  async fetchSymbols() {
-    const col = this.colIdxMap.Summary['Symbol'];
+  async fetchSymbols(title = 'Symbol') {
+    const col = this.colIdxMap.Summary[title];
     const values = await this.fetchValues(`Summary!${col}3:${col}`);
     return _.flatten(values);
   }
