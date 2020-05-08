@@ -27,7 +27,7 @@ async function fetchStockPrice(symbol) {
 }
 
 async function main() {
-  const config = JSON.parse(fs.readFileSync('stock-fill-kr.secret.json'));
+  const config = JSON.parse(fs.readFileSync('invest-kr.secret.json'));
 
   const spreadsheet = await Spreadsheet.build(config.spreadsheet_id, 'B', 'G');
   const symbols = await spreadsheet.fetchSymbols();
