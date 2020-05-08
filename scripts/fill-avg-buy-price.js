@@ -8,15 +8,18 @@ const computeAvgBuyPrice = (symbol, history) => {
   const colIndices = {};
   head.map((item, i) => (colIndices[item] = i));
 
-  const items = history
-    .filter((item) => item[colIndices.Symbol] === symbol)
-    .map((item) => ({
-      action: item[colIndices.Action],
-      qty: parseInt(item[colIndices.Qty].replace(/,/, '')),
-      price: parseFloat(
-        item[colIndices.Price].replace(/[$₩]/, '').replace(/,/, '')
-      ),
-    }));
+  const itemsSymbol = history.filter(
+    (item) => item[colIndices.Symbol] === symbol
+  );
+  if (!itemsSymbol.length) return 0;
+
+  const items = itemsSymbol.map((item) => ({
+    action: item[colIndices.Action],
+    qty: parseInt(item[colIndices.Qty].replace(/,/, '')),
+    price: parseFloat(
+      item[colIndices.Price].replace(/[$₩]/, '').replace(/,/, '')
+    ),
+  }));
 
   const buyItems = items.filter((item) => item.action === 'Buy');
   const sellItems = items.filter((item) => item.action === 'Sell');
