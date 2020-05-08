@@ -55,11 +55,27 @@ class Spreadsheet {
     return _.flatten(values);
   }
 
+  async fetchHistory() {
+    const { data } = await this.client.get({
+      spreadsheetId: this.spreadsheetId,
+      range: 'History!A:F',
+    });
+    return data.values;
+  }
+
   async updatePrices(prices) {
     const col = this.colIdxMap.Summary['Cur Price'];
     await this.updateValues(
       `Summary!${col}3:${col}${2 + prices.length}`,
       prices.map((p) => [p])
+    );
+  }
+
+  async updateAvgBuyPrices(values) {
+    const col = this.colIdxMap.Summary['Avg Buy'];
+    await this.updateValues(
+      `Summary!${col}3:${col}${2 + values.length}`,
+      values.map((v) => [v])
     );
   }
 }
