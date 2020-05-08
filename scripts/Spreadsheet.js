@@ -19,12 +19,20 @@ class Spreadsheet {
     return new Spreadsheet(spreadsheets.values, ...args);
   }
 
-  async fetchSymbols() {
+  async fetchValues(range) {
     const { data } = await this.client.get({
       spreadsheetId: this.spreadsheetId,
-      range: `Summary!${this.symbolCol}3:${this.symbolCol}`,
+      range,
     });
-    return _.flatten(data.values);
+
+    return data.values;
+  }
+
+  async fetchSymbols() {
+    const values = await this.fetchValues(
+      `Summary!${this.symbolCol}3:${this.symbolCol}`
+    );
+    return _.flatten(values);
   }
 
   async updatePrices(prices) {
