@@ -31,14 +31,20 @@ const computeAvgBuyPrice = (symbol, history) => {
     }
   });
 
-  const filteredBuyItems = items
-    .slice(startIdx)
-    .filter((i) => i.action === 'Buy');
+  let totalQty = 0;
+  let totalPrice = 0;
+  for (let i = startIdx; i < items.length; ++i) {
+    const { qty, price, action } = items[i];
+    if (action === 'Buy') {
+      totalQty += qty;
+      totalPrice += price * qty;
+    } else {
+      totalQty -= qty;
+      totalPrice -= price * qty;
+    }
+  }
 
-  const qty = filteredBuyItems.reduce((sum, i) => sum + i.qty, 0);
-  const price = filteredBuyItems.reduce((sum, i) => sum + i.price * i.qty, 0);
-
-  return qty === 0 ? 0 : price / qty;
+  return totalQty === 0 ? 0 : totalPrice / totalQty;
 };
 
 async function main(market) {
